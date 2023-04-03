@@ -24,10 +24,10 @@ while True:
         if len(given_input) > 1 or given_input in ("", " "):
             print("Please, input a single letter.")
             continue
-        elif given_input not in 'abcdefghijklmnopqrstuvwxyz':
+        elif not given_input.isalpha() or given_input.isupper():
             print('Please, enter a lowercase letter from the English alphabet.')
             continue
-        if given_input in word and given_input not in enc_word and given_input in 'abcdefghijklmnopqrstuvwxyz':
+        if given_input in word and given_input not in enc_word:
             for number in range(len(word)):
                 if word[number] == given_input:
                     enc_word[number] = given_input
@@ -35,7 +35,7 @@ while True:
                         num = 0
                         print('You guessed the word '+''.join(enc_word)+'!\nYou survived!')
                         amount_win.append(1)
-        elif given_input in enc_word and given_input in 'abcdefghijklmnopqrstuvwxyz':
+        elif given_input in enc_word:
             print("You've already guessed this letter.")
             continue
         else:
